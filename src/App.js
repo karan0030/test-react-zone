@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useRoutes } from 'react-router';
+import First from './my-app/component/first';
+import Welcome from './my-app/component/welcome';
+const routes=[
+  {
+    children:[
+      {
+        path: '/',
+      element: <Welcome />
+      },
+      {
+        path: '/welcome',
+      element: <Welcome />
+      } ,
+      {
+        path: '/first',
+      element: <First />
+      }
+    ]
+  }
+]
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+ const element = useRoutes(routes);
+  return element
 }
 
 export default App;
